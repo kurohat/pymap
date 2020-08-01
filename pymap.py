@@ -42,10 +42,12 @@ else:
     if port is None:
         output = subprocess.getoutput('nmap %s -T5 -Pn| grep "/" | grep -v "https://nmap.org"' % (target))
     else:
-        out = subprocess.getoutput('nmap %s %s -T5 -Pn| grep "/" | grep -v "https://nmap.org"' % (target, port))
-    print(output)
+        output = subprocess.getoutput('nmap %s %s -T5 -Pn| grep "/" | grep -v "https://nmap.org"' % (target, port))
+    
+    print(output) # print open port
+    
     port = ''
-    for line in str(output).splitlines():
+    for line in str(output).splitlines(): # parse ports
         port = port+line.split('/')[0]+','
 
     print('Enumerating open ports...')
@@ -54,4 +56,4 @@ else:
     else:
         output = subprocess.getoutput('nmap %s -p%s -A -O -Pn -T5 --script %s' % (target, port, script))
 
-    print(output)
+    print(output) # print result
