@@ -16,7 +16,8 @@ $ python3 pymap.py -t $IP -nfs # nfs scan
 # todo:
 - [x] samba: `nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse <ip>`
 - [x] rpcbind: `nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount <ip>`
+- [x] ping sweep
+- [x] created cool banner
+- [x] Only perfrom SYN scan!!, (sudo = alway -sS)
 - [ ] improve speed (using thread?)
-- [ ] Only perfrom SYN scan!!
 - [ ] script=smb-brute?
-- [ ] ping sweep
