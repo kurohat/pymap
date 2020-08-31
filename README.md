@@ -7,8 +7,10 @@ pymap = python3 + nmap. Im so fucking tried of copy+paste port number
 
 # Q&A
 - Why using sudo?
+
 read [this](https://security.stackexchange.com/questions/175235/nmap-default-scan-technique) then you will know why sudo. Moreover, something ping sweeping with out sudo cannot detect some hosts... dunno why. If you know, pls let me know
 - Why -T4 when ports scanning?
+
 Sometime when I used -T5 is messed up or missed some open port... dunno why. If you know, pls let me know
 
 # usage
