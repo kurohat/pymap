@@ -1,5 +1,12 @@
 # pymap
-pymap = python3 + nmap. Im so fucking tried of copy+paste port number
+Pymap provides an easy way to use Nmap. With Pymap, you can forget different flags that you need to provide to Nmap every single time when you are playing a CTF. Pymap starts by scanning for open ports. Thereafter, Pymap feeds the open ports to Nmap to scan for service version, run vuln script, etc. This makes Pymap **faster** than the typical way of running Nmap. 
+
+Pymap also provide:
+- Ip sweeping, 
+- SMB scanning
+- NFS scan
+- using Nmap scripts
+**PS**: you should learn how to use Nmap before using this tool
 
 # requriments
 - subprocess
