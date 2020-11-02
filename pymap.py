@@ -1,4 +1,5 @@
-import subprocess, argparse, sys
+#!/bin/python3
+import subprocess, argparse, sys, threading
 
 banner = """                                                    
 @@@@@@@   @@@ @@@  @@@@@@@@@@    @@@@@@   @@@@@@@  
@@ -15,7 +16,6 @@ Author: kuroHat
 Github: https://github.com/gu2rks\n
 """
 print(banner)
-
 def parse():
     parser = argparse.ArgumentParser(
         description="pymap = python3 + nmap. Im so fucking tried of copy+paste port number")
@@ -37,6 +37,13 @@ def ping_sweep():
     print('sweeping on network: %s \nLooking for alive hosts...' %(target))
     output = subprocess.getoutput('sudo nmap %s -sn | grep for' % (target))
     print(output)
+
+def service_scan(p):
+    if script is None:
+        output = subprocess.getoutput('sudo nmap %s -p%s -Pn -sV | grep %s' % (target, p, p))
+    else:
+        output = subprocess.getoutput('sudo nmap %s -p%s -Pn -sV --script %s | grep %s' % (target, p, script, p))
+    print(output) # print result
 
 args = parse()
 target = args.target
@@ -61,7 +68,7 @@ else:
     if args.script:
         script = args.script
 
-    print('port scanning...')
+    print('[+] Port scanning...')
     if port is None:
         output = subprocess.getoutput('sudo nmap %s -T4 -Pn | grep "/" | grep -v "https://nmap.org"' % (target))
     else:
@@ -70,13 +77,8 @@ else:
     print(output) # print open port
     
     port = ''
+    print('[+] Enumerating open ports...')
     for line in str(output).splitlines(): # parse ports
-        port = port+line.split('/')[0]+','
-
-    print('Enumerating open ports...')
-    if script is None:
-        output = subprocess.getoutput('sudo nmap %s -p%s -Pn -A -O -T5' % (target, port))
-    else:
-        output = subprocess.getoutput('sudo nmap %s -p%s -A -O -Pn -T5 --script %s' % (target, port, script))
-
-    print(output) # print result
+        port = line.split('/')[0]
+        x = threading.Thread(target=service_scan, args=(port,))
+        x.start()
