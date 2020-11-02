@@ -41,4 +41,6 @@ $ sudo python3 pymap.py -t 192.168.1.0/24 -pS # ping sweep on network, looking f
 - [x] created cool banner
 - [x] Only perfrom SYN scan!!, (sudo = alway -sS)
 - [x] improve speed (using thread?)
+- [x] add -sC
+- [x] remove `Service detection performed. Please report any incorrect results at https://nmap.org/submit/Nmap done: 1 IP address (1 host up) scanned in 2.10 seconds Starting Nmap 7.80 ( https://nmap.org ) at 2020-11-02 15:10 EST Nmap scan report for 10.200.11.232 Host is up (0.046s latency).`
 - [ ] script=smb-brute?

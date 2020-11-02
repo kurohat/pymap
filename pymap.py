@@ -40,9 +40,9 @@ def ping_sweep():
 
 def service_scan(p):
     if script is None:
-        output = subprocess.getoutput('sudo nmap %s -p%s -Pn -sV | grep %s' % (target, p, p))
+        output = subprocess.getoutput('sudo nmap %s -p%s -Pn -sV -sC | grep -v -e "nmap" -e "Nmap" -e "latency" -e "Service Info: OS:"' % (target, p))
     else:
-        output = subprocess.getoutput('sudo nmap %s -p%s -Pn -sV --script %s | grep %s' % (target, p, script, p))
+        output = subprocess.getoutput('sudo nmap %s -p%s -Pn -sV -sC --script %s | grep -v -e "nmap" -e "Nmap" -e "latency" -e "Service Info: OS:"' % (target, p, script))
     print(output) # print result
 
 args = parse()
