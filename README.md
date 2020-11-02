@@ -7,8 +7,10 @@ Pymap also provide:
 - NFS scan
 - using Nmap scripts
 
-
 **PS**: you should learn how to use Nmap before using this tool
+
+## UPDATED v 1.0
+Pymap is using threading when perfroming service scan. It reduce time taken for service scan more that 50% (Upon scanning a target with more than 5 open ports). I tested by scanning `beep.htb` which have 12 open ports. Pymap last version would take 350 sec, **V 1.0 takes only 150 sec!!!**
 
 # requriments
 - subprocess
@@ -38,5 +40,5 @@ $ sudo python3 pymap.py -t 192.168.1.0/24 -pS # ping sweep on network, looking f
 - [x] ping sweep
 - [x] created cool banner
 - [x] Only perfrom SYN scan!!, (sudo = alway -sS)
-- [ ] improve speed (using thread?)
+- [x] improve speed (using thread?)
 - [ ] script=smb-brute?
